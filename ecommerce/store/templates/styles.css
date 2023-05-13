@@ -1,0 +1,19 @@
+#cool-margin{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.header{
+    background-color: #202124;
+}
+
+.bg-black{
+    background-color: #202124;
+    margin-right: 10px;
+}
+
+.general{
+    border-radius: 15px;
+}
+.white-border{
+    border: solid 1px white;
+}
