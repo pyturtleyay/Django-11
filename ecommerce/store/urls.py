@@ -34,15 +34,7 @@ urlpatterns = [
         auth_views.PasswordResetConfirmView.as_view(),
         name= 'password-reset/confirm'),
     path('password-reset/complete/',
-        auth_views.PasswordResetCompleteView.as_view(),{% extends 'base.html' %}
-
-{% block content %}
-  <h1>Products</h1>
-  <!-- <ul>
-   
-  </ul> -->
-{% endblock %}
-
+        auth_views.PasswordResetCompleteView.as_view(),
         name='password_reset_complete'),
     path('product_list/',
         views.product_list,name="product_list")

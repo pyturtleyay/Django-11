@@ -1,31 +1,51 @@
 {%extends "base.html"%}
 
 {%block content %}
-</html>
+<p class="noborder">hihihihihi</p>
+<section id="big">  
+    <div class="container">
+     <h1 style="font-size: 50px;" class="text-center"><b>Earbuds that sound great all day.</b></h1>
+   <div class="d-flex justify-content-center">
+     <div class="card-deck " style="width: 50rem;">
+        <div class="card noborder" style="border:none;">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <div class="card noborder">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title noborder">Card title</h5>
+            <p class="card-text noborder">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        </div>
+      </div>
+      </div>
 
-    <section id="parent" class="container">
-        <div class="row">
-        <section class="col-md-3" id="sidebar">
-            HI
-        </section><section class="col-md-9" id="products">
-            <div class="row">
-                <div class="card-deck">
-                    {%for product in products%} 
-                    <div class="card " style="border: none;">
-           
-                      <div class="card-footer">
-                      
-                        <p class="card-text"><small class="text-muted">{{product.name}}</small></p>
-                        <span>{{product.price}}</span>
-                      </div>
-                    </div>
-                   {%endfor%}
-                  
-                  </div>
-        </div>
-        </section>
-        
-        </div>
-    </section>
+
+
+</section>
 
 {%endblock%}
+
