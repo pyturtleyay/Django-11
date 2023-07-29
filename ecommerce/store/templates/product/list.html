@@ -1,0 +1,31 @@
+{%extends "base.html"%}
+
+{%block content %}
+</html>
+
+    <section id="parent" class="container">
+        <div class="row">
+        <section class="col-md-3" id="sidebar">
+            HI
+        </section><section class="col-md-9" id="products">
+            <div class="row">
+                <div class="card-deck">
+                    {%for product in products%} 
+                    <div class="card " style="border: none;">
+           
+                      <div class="card-footer">
+                      
+                        <p class="card-text"><small class="text-muted">{{product.name}}</small></p>
+                        <span>{{product.price}}</span>
+                      </div>
+                    </div>
+                   {%endfor%}
+                  
+                  </div>
+        </div>
+        </section>
+        
+        </div>
+    </section>
+
+{%endblock%}

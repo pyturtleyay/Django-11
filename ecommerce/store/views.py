@@ -33,8 +33,8 @@ def user_login(request):
                 return HttpResponse('Disabled Account')    
     return render(request, '/home/pyturtle_/Documents/ESHOPPING/ecommerce/store/templates/registration/login.html')
 
-@login_required
+
 def product_list(request):
     products = Product.objects.all()
     context = {'products': products}
-    return render(request, 'product_list.html', context)
+    return render(request, 'product/list.html', context)
