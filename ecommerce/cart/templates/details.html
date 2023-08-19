@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+  
+    <ul class="list-group list-group-flush">
+      {% for items in cart %}
+      {% empty %}
+      <p>EMPTY</p>
+      
+      {% with product=items.product %}
+      
+
+
+
+
+      <li class="list-group-item">{{product.name}}</li>
+      {% endwith %}
+      {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

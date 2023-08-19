@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
@@ -38,3 +38,8 @@ def product_list(request):
     products = Product.objects.all()
     context = {'products': products}
     return render(request, 'product/list.html', context)
+def product_detail(request, id ,slug):
+    product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    return render(request, 'product/detail.html', 
+                            {'product':product})
+
