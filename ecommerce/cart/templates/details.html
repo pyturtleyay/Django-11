@@ -4,23 +4,28 @@
 
 {% block content %}
 
-<div class="card" style="width: 18rem;">
+<div class="card text-center w-100 m-4" style="width: 18rem;">
   
     <ul class="list-group list-group-flush">
-      {% for items in cart %}
-      {% empty %}
-      <p>EMPTY</p>
+      {% for item in cart %}
       
-      {% with product=items.product %}
-      
+      {% with product=item.product %}
 
 
 
 
-      <li class="list-group-item">{{product.name}}</li>
+
+      <li class="list-group-item w-100">{{product.name}}</li>
+      <form action="{%url 'cart:cart_add' product.id %}" method="post">
+        {{item.update_quantity_form.quantity}}
+        {{item.update_quantity_form.override}}
+        <input type="submit" value = "Update">
+        {%csrf_token %}
+      </form>
       {% endwith %}
       {% endfor %}
     </ul>
 </div>
+<button class =" m-4 w-100 btn btn-submit">Check Out</button>
 
 {% endblock %}

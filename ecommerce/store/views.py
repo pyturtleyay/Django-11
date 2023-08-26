@@ -6,7 +6,7 @@ from .models import Product
 from .forms import LoginForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-
+from cart.forms import CartAddProductForm
 
 def store(request):
     return HttpResponse("Hello")
@@ -38,8 +38,11 @@ def product_list(request):
     products = Product.objects.all()
     context = {'products': products}
     return render(request, 'product/list.html', context)
+
 def product_detail(request, id ,slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    cart_product_form = CartAddProductForm()
     return render(request, 'product/detail.html', 
-                            {'product':product})
+                            {'product':product,
+                            'cart_product_form':cart_product_form})
 
