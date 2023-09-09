@@ -24,15 +24,17 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Features</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-            </li>
+         
           </ul>
           <ul class="navbar-nav">
             <!-- <span class="text-light px-4" style="font-size: 25px;">|</span> -->
                
             <span class="navbar-nav">
               <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="fa-solid fa-cart-shopping text-light"></i></a>
+           
+            </span>
+            <span class="navbar-nav">
+              <a class="nav-link" href="{% url 'shop:profile' %}"><i class="fa-solid fa-user"></i></a>
            
             </span>
           </ul>

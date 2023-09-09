@@ -42,5 +42,6 @@ urlpatterns = [
     path('product_detail/<int:id>/<slug:slug>/',
         views.product_detail, name="product_detail"),
         
-  
+    path('profile/',
+    views.profile, name = "profile"),
 ]

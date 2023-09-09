@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product
 from .forms import LoginForm
 from django.contrib.auth import authenticate, login
@@ -13,9 +13,9 @@ def store(request):
 
 def user_login(request):
 
-    all_user = User.objects.all()
-    for user in all_user:
-        print(user.username)
+    # all_user = User.objects.all()
+    # for user in all_user:
+    #     print(user.username)
 
     if request.method=='POST':
         userEmail = request.POST.get('userEmail')
@@ -28,7 +28,7 @@ def user_login(request):
             if user.is_active:
                 login(request, user)
 
-                return render(request, 'store.html')
+                return redirect('/product_list')
             else:
                 return HttpResponse('Disabled Account')    
     return render(request, '/home/pyturtle_/Documents/ESHOPPING/ecommerce/store/templates/registration/login.html')
@@ -45,4 +45,6 @@ def product_detail(request, id ,slug):
     return render(request, 'product/detail.html', 
                             {'product':product,
                             'cart_product_form':cart_product_form})
-
+def profile(request):
+    current_user = request.user
+    return render(request, 'product/profile.html', {'user':current_user})

@@ -4,14 +4,8 @@ import uuid
 
 from django.db import models
 from django.urls import reverse
-class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    address = models.CharField(max_length=500)
-    avatar = models.ImageField()
 
-    def __str__(self):
-        return self.name
+
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
