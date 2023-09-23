@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar w-100 navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar w-100 navbar-expand-lg navbar-dark bg-dark px-4">
         <a class="navbar-brand" href="#">Navbar w/ text</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -28,15 +28,21 @@
           </ul>
           <ul class="navbar-nav">
             <!-- <span class="text-light px-4" style="font-size: 25px;">|</span> -->
-               
+            <div class="dropdown">
+              <button class="btn navbar-nav btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="{% url 'shop:profile' %}"><i class="fa-solid fa-user"></i></a>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="store/templates/product/profile.html">Profile</a>
+                <a class="dropdown-item" href="#">Log out</a>
+                <a class="dropdown-item" href="#">Edit profile</a>
+              </div>
+            </div>   
             <span class="navbar-nav">
               <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="fa-solid fa-cart-shopping text-light"></i></a>
            
             </span>
-            <span class="navbar-nav">
-              <a class="nav-link" href="{% url 'shop:profile' %}"><i class="fa-solid fa-user"></i></a>
-           
-            </span>
+
           </ul>
          
         </div>
