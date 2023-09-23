@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .models import Product
+from .models import Product, Category
 from .forms import LoginForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -36,7 +36,8 @@ def user_login(request):
 
 def product_list(request):
     products = Product.objects.all()
-    context = {'products': products}
+    categories = Category.objects.all()
+    context = {'products': products, 'categories': categories}
     return render(request, 'product/list.html', context)
 
 def product_detail(request, id ,slug):
@@ -45,6 +46,7 @@ def product_detail(request, id ,slug):
     return render(request, 'product/detail.html', 
                             {'product':product,
                             'cart_product_form':cart_product_form})
+
 def profile(request):
     current_user = request.user
     return render(request, 'product/profile.html', {'user':current_user})

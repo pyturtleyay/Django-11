@@ -4,28 +4,59 @@
 
 {% block content %}
 
-<div class="card text-center w-100 m-4" style="width: 18rem;">
-  
-    <ul class="list-group list-group-flush">
-      {% for item in cart %}
-      
+<section style="margin-left:7%; margin-right: 7%;">
+<h3 class="my-3">Your shopping cart</h3>
+<table style="width: 100%;">
+  <thead >
+    <tr style="background-color: var(--light-blue);">
+      <th class="py-2">Image</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Remove</th>
+      <th>Unit price</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in cart %}
       {% with product=item.product %}
-
-
-
-
-
-      <li class="list-group-item w-100">{{product.name}}</li>
-      <form action="{%url 'cart:cart_add' product.id %}" method="post">
-        {{item.update_quantity_form.quantity}}
-        {{item.update_quantity_form.override}}
-        <input type="submit" value = "Update">
-        {%csrf_token %}
-      </form>
+        <tr>
+          <td>
+            <a href="{{ product.get_absolute_url }}">
+              <img src="{% if product.image %}{{ product.image.url }}
+              {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 180px; height: 180px;">
+            </a>
+          </td>
+          <td>{{ product.name }}</td>
+          <td>
+            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+              {{ item.update_quantity_form.quantity }}
+              {{ item.update_quantity_form.override }}
+              <input type="submit" value="Update" style="background-color: var(--coral); color: var(--light-ivory); border-color: transparent;" class="px-2 rounded my-3">
+              {% csrf_token %}
+            </form>
+          </td>
+          <td>
+            <form action="{% url "cart:cart_remove" product.id %}" method="post">
+              <input type="submit" value="Remove" style="background-color: var(--coral); color: var(--light-ivory); border-color: transparent;" class="px-2 rounded my-3">
+              {% csrf_token %}
+            </form>
+          </td>
+          <td class="num">${{ item.price }}</td>
+          <td class="num">${{ item.total_price }}</td>
+        </tr>
       {% endwith %}
-      {% endfor %}
-    </ul>
-</div>
-<button class =" m-4 w-100 btn btn-submit">Check Out</button>
-
+    {% endfor %}
+    <tr class="total" style="background-color: var(--light-blue);">
+      <td style="color: var(--dark-blue); font-weight: 700;">Total</td>
+      <td colspan="4"></td>
+      <td style="color: var(--dark-blue); font-weight: 700;">${{ cart.get_total_price }}</td>
+    </tr>
+    <tr class="total">
+      <td colspan="4"></td>
+      <td colspan="2" style="color: var(--dark-blue); font-weight: 700; background-color: var(--dark-blue); text-align: center;"><a href="#" style="color: white;">Checkout</a></td>
+    </tr>
+  </tbody>
+</table>
+</section>
 {% endblock %}

@@ -1,3 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+:root {
+    --dark-blue: #293B5F;
+    --white: #FFFFFF;
+    --light-mint: #E3F6F5;
+    --light-blue: #BAE8E8;
+    --light-ivory: #FAFAFA;
+    --coral: #FF8989;
+}
+
+* {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+p {
+    font-weight: 300 !important;
+}
+
+.brand-name {
+    font-weight: 700;
+}
+
 .product:hover{
   
     transform: scale(2, 2);
@@ -21,4 +44,25 @@
 
 .noborder {
    color: navajowhite;
+}
+
+.md-text {
+    font-size: medium;
+}
+
+tbody tr:nth-child(odd) {
+    background: var(--light-ivory);
+}
+
+table th, table td {
+    font-size:14px;
+    padding:10px;
+}
+
+table th {
+    color: var(--dark-blue);
+}
+
+.total {
+    color: var(--dark-blue);
 }

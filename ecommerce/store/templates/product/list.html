@@ -27,7 +27,7 @@
 <div class="container">
   <div id="carouselExampleControls" class="carousel slide m-4" data-ride="carousel" style="border-radius: 5px;">
     <div class="carousel-inner">
-      <div class="d-flex justify-content-center align-items-center" style="height: 400px">
+      <div class="d-flex justify-content-center align-items-center" style="height: 432px">
         <div class="carousel-item active">
           <img class="d-block w-3 img-fluid"
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F000%2F393%2F859%2Foriginal%2Fvector-mobile-phone-clipart-designs.jpg&f=1&nofb=1&ipt=16086b582cee4ea32db3460bd48e663baa4d5a355ff02c871674bf8a036f1868&ipo=images"
@@ -56,72 +56,43 @@
   </div>
 </div>
 </div>
-<h1 style="font-size: 50px;" class="text-center"><b>Best products.</b></h1>
-<section id="big" style="margin:5%;">
-  <div class="row">
-    <div class="col-md-3">
-      <span class="text-secondary" style="font-size: 20px;">Product type</span>
+<h1 style="font-size: 50px; background-color: var(--light-mint);margin-left:7%; margin-right: 7%;" class="text-center py-2 my-5"><b>Best products.</b></h1>
+<section id="big" style="margin-left:7%; margin-right: 7%;">
+
+    <div style="padding-left: 7%; width: 30%; float: left;">
+      <p class="mb-4" style="font-size: 20px; font-weight: 500 !important; color: var(--coral);">Products</p>
       <div class=" flex-column d-flex ">
 
-        <div class="custom-control custom-checkbox  align-items-center ml-4">
+        {% for category in categories %}
+        <div class="custom-control custom-checkbox  align-items-center mb-3">
           <input type="checkbox" class="custom-control-input" id="phones">
-          <label class="custom-control-label" for="phones">Phones</label>
-
+          <label class="custom-control-label md-text" for="phones" style="font-weight: 300;">{{category.name}}</label>
         </div>
-        <div class="custom-control custom-checkbox ml-4">
+        {% endfor %}
 
-          <input type="checkbox" class="custom-control-input" id="accessories">
-          <label class="custom-control-label" for="accessories">Accessories</label>
-        </div>
-        <div class="custom-control custom-checkbox ml-4">
-
-          <input type="checkbox" class="custom-control-input" id="earbuds">
-          <label class="custom-control-label" for="earbuds">Earbuds</label>
-
-        </div>
       </div>
 
     </div>
 
-    <div class="col-md-9">
-
-
-      <div class="d-flex justify-content-center">
-
-        <div class="card-columns">
+    <div style="width: 80%; float: left; margin-right:-220px; overflow: hidden;">
           <!-- <div class="card-deck justify-content-center flex-wrap" style="width: 50rem; "> -->
+    
           {% for product in products %}
-         
-            <div class="card  pb-4" style="border:none;">
+            <div class="card bg-light mb-4 ml-4" style="border:none; width: 25%; float:left;">
               <a href="{{product.get_absolute_url}}">
-              <img class="card-img-top imge" src="{{product.image.url}}" alt="Card image cap"
-                style="background-color: #F8F9FA; height: 425px;" />
+              <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap"
+                style="background-color: #F8F9FA; height: 350px;" />
               <div class="card-body">
                 <h5 class="card-title text-dark">{{product.name}}</h5>
                 <p class="card-text text-secondary">{{product.price}}</p>
                 <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
               </div>
             </a>
-            </div>
-       
+          </div>
           {% endfor %}
-
-          <!-- <div class="card   pb-4" style="border:none;">
-            <img class="card-img-top imge"
-              src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngmart.com%2Ffiles%2F7%2FMobile-Phone-PNG-Photos.png&f=1&nofb=1&ipt=92d8c4e7c51f37a933f1f44d2771b7546d8e6f670e4dbaa6e4900a912374a50a&ipo=images"
-              alt="Card image cap" style="background-color: #F8F9FA;">
-            <div class="card-body">
-              <h5 class="card-title text-dark">Pixel 3a</h5>
-              <p class="card-text text-secondary">550$</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div> -->
-
-
-        </div>
-      </div>
+        
     </div>
-  </div>
+
 
 </section>
 
