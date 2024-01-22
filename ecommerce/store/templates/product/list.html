@@ -63,37 +63,18 @@
       <span class="text-secondary" style="font-size: 20px;">Product type</span>
       <div class=" flex-column d-flex ">
 
-        <div class="custom-control custom-checkbox  align-items-center ml-4">
-          <input type="checkbox" class="custom-control-input" id="phones">
-          <label class="custom-control-label" for="phones">Phones</label>
-          {% for product in products %}
-          {% if product.category == "Phones" %}
-          <div class="card  pb-4" style="border:none;">
-            <a href="{{product.get_absolute_url}}">
-            <img class="card-img-top imge" src="{{product.image.url}}" alt="Card image cap"
-              style="background-color: #F8F9FA; height: 425px;" />
-            <div class="card-body">
-              <h5 class="card-title text-dark">{{product.name}}</h5>
-              <p class="card-text text-secondary">{{product.price}}</p>
-              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-            </div>
-          </a>
-          </div>
-          {% endif %}
-          {% endfor %}
-        </div>
         
-        <div class="custom-control custom-checkbox ml-4">
-
-          <input type="checkbox" class="custom-control-input" id="accessories">
-          <label class="custom-control-label" for="accessories">Accessories</label>
-        </div>
-        <div class="custom-control custom-checkbox ml-4">
-
-          <input type="checkbox" class="custom-control-input" id="earbuds">
-          <label class="custom-control-label" for="earbuds">Earbuds</label>
-
-        </div>
+  
+    <ul>
+        <li {% if not category %}class="selected"{% endif %}>
+          <div class="custom-control custom-checkbox ml-4"><a href="{% url 'shop:product_list' %}">All</a></div>
+        </li>
+        {% for c in categories %}
+        <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+          <div class="custom-control custom-checkbox ml-4"><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></div>
+        </li>
+        {% endfor %}
+    </ul>
       </div>
 
     </div>

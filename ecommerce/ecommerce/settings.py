@@ -25,12 +25,14 @@ SECRET_KEY = 'django-insecure-t2t8iyfz2n(zfkyx=#8-p9cs0s$+(o_&4@!q@0k!iph94n2vf*
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ALLOWED_HOSTS = []
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51OBFisFbpIVK2KIPuXnGHpAxvO3aIijgoViumPX5HzRqRTbyc55coyqmwd3qcnSAVKDdtge8c692FdH2V7XAD8vR00OUupCIkv' 
+STRIPE_SECRET_KEY = 'sk_test_51OBFisFbpIVK2KIPScijNphn0ClxJp3MS7U28X3vMSK94TGy1hPUuwIxDVLGaUdgUEso9psugnfhFArPJufKwnPl00O1gxQO49'
+STRIPE_API_VERSION = '2022-08-01'
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'cart.apps.CartConfig',
-
+    'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig'
 ]
 CART_SESSION_ID = 'cart'
 

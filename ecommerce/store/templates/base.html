@@ -1,4 +1,7 @@
 {% load static %}
+
+
+
 <!DOCTYPE html>
 <html lang="en">
    
@@ -10,30 +13,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
+
+
 <body>
+<style>
+  body{
+    background-color : #F8F9FA;
+  }
+
+</style>
+
     <nav class="navbar w-100 navbar-expand-lg navbar-dark bg-dark px-4">
-        <a class="navbar-brand" href="#">Navbar w/ text</a>
+        <a class="navbar-brand" href="#">StoreFront</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'shop:product_list' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#">About Store</a>
             </li>
          
           </ul>
           <ul class="navbar-nav">
-            <!-- <span class="text-light px-4" style="font-size: 25px;">|</span> -->
+            <!-- <span class="text-light px-4" style="font-sizshop:product_liste: 25px;">|</span> -->
             <div class="dropdown">
               <button class="btn navbar-nav btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <a class="nav-link" href="{% url 'shop:profile' %}"><i class="fa-solid fa-user"></i></a>
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="store/templates/product/profile.html">Profile</a>
+                <a class="dropdown-item" href="{% url 'shop:profile' %}">Profile</a>
                 <a class="dropdown-item" href="#">Log out</a>
                 <a class="dropdown-item" href="#">Edit profile</a>
               </div>
@@ -47,6 +59,19 @@
          
         </div>
       </nav>
+      <div class="cart">
+        {% with total_items=cart|length %}
+        {% if total_items > 0 %}
+        Your cart:
+        <a href="{% url 'cart:cart_detail' %}">
+        {{ total_items }} item{{ total_items|pluralize }},
+        ${{ cart.get_total_price }}
+        </a>
+        {% elif not order %}  <!-- new code here -->
+        Your cart is empty.
+        {% endif %}
+        {% endwith %}
+       </div>
     {% block content %}
       
     
