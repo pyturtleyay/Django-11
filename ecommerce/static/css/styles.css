@@ -1,0 +1,39 @@
+/* Product List Page  */
+/* --------------------------------------------------------- */
+.product:hover {
+  transform: scale(2, 2);
+}
+
+/* HEADER */
+/* --------------------------------------------------------- */
+.banner-area {
+  max-height: 50vh;
+}
+
+/* Product Detail Page  */
+/* --------------------------------------------------------- */
+img:hover {
+  transform: scale(1.05, 1.05);
+}
+
+img {
+  transition: 0.5s;
+}
+
+.product {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  transition: width 2s, height 2s, transform 2s;
+}
+
+/* .center{
+    margin-right: 10%;
+}
+
+.left{
+    margin-right: 10%;
+} */
+
+.noborder {
+  color: navajowhite;
+}
